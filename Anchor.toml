@@ -1,0 +1,12 @@
+[programs.localnet]
+ticketing_system = "EYaJM3ZCcS7cRQZZcd9NaivR4SKj79Q4wVMUVnkBZWRW"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet"
+wallet = "/Users/fmendez/.config/solana/id.json"
+
+[scripts]
+test = "yarn run mocha -t 1000000 tests/"
