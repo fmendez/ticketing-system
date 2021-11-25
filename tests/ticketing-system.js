@@ -7,41 +7,56 @@ describe("ticketing-system", () => {
   const provider = anchor.Provider.env();
   anchor.setProvider(provider);
   const program = anchor.workspace.TicketingSystem;
-  const _baseAccount = anchor.web3.Keypair.generate();
+  const _ticketingSystem = anchor.web3.Keypair.generate();
+  const tickets = [1111, 2222, 3333];
 
-  it("Is initializes the account", async () => {
-    const baseAccount = _baseAccount;
-    await program.rpc.initialize("Event 1", {
+  it("Is initializes the ticketing system", async () => {
+    const ticketingSystem = _ticketingSystem;
+    await program.rpc.initialize(tickets, {
       accounts: {
-        baseAccount: baseAccount.publicKey,
+        ticketingSystem: ticketingSystem.publicKey,
         user: provider.wallet.publicKey,
         systemProgram: SystemProgram.programId,
       },
-      signers: [baseAccount],
+      signers: [ticketingSystem],
     });
 
-    const account = await program.account.baseAccount.fetch(
-      baseAccount.publicKey
+    const account = await program.account.ticketingSystem.fetch(
+      ticketingSystem.publicKey
     );
 
-    console.log("Data: ", account.events[0]);
-    assert.ok(account.events[0] === "Event 1");
+    assert.ok(account.tickets.length === 3);
+    assert.ok(
+      account.tickets[0].owner.toBase58() ==
+        ticketingSystem.publicKey.toBase58()
+    );
   });
 
-  it("Adds an event to the account", async () => {
-    const baseAccount = _baseAccount;
-    await program.rpc.update("Another Event", {
+  it("Is purchases a ticket", async () => {
+    const ticketingSystem = _ticketingSystem;
+    await program.rpc.purchase(tickets[0], 0, {
       accounts: {
-        baseAccount: baseAccount.publicKey,
+        ticketingSystem: ticketingSystem.publicKey,
+        user: provider.wallet.publicKey,
       },
     });
 
-    const account = await program.account.baseAccount.fetch(
-      baseAccount.publicKey
+    const account = await program.account.ticketingSystem.fetch(
+      ticketingSystem.publicKey
     );
-    console.log("Updated data: ", account.events[1]);
-    console.log("All account data: ", account);
-    console.log("All events: ", account.events);
-    assert.ok(account.events.length === 2);
+
+    assert.ok(account.tickets.length === 3);
+
+    // Ticket not owned by the account anymore
+    assert.ok(
+      account.tickets[0].owner.toBase58() !=
+        ticketingSystem.publicKey.toBase58()
+    );
+
+    // Ticket now owned by the user
+    assert.ok(
+      account.tickets[0].owner.toBase58() ==
+        provider.wallet.publicKey.toBase58()
+    );
   });
 });
