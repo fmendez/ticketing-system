@@ -1,8 +1,8 @@
-const anchor = require("@project-serum/anchor");
-const assert = require("assert");
-const { SystemProgram } = anchor.web3;
-
 describe("ticketing-system", () => {
+  const anchor = require("@project-serum/anchor");
+  const assert = require("assert");
+
+  const { SystemProgram } = anchor.web3;
   // Configure the client to use the local cluster.
   const provider = anchor.Provider.env();
   anchor.setProvider(provider);
@@ -28,7 +28,7 @@ describe("ticketing-system", () => {
     assert.ok(account.tickets.length === 3);
     assert.ok(
       account.tickets[0].owner.toBase58() ==
-        ticketingSystem.publicKey.toBase58()
+      ticketingSystem.publicKey.toBase58()
     );
   });
 
@@ -50,13 +50,13 @@ describe("ticketing-system", () => {
     // Ticket not owned by the account anymore
     assert.ok(
       account.tickets[0].owner.toBase58() !=
-        ticketingSystem.publicKey.toBase58()
+      ticketingSystem.publicKey.toBase58()
     );
 
     // Ticket now owned by the user
     assert.ok(
       account.tickets[0].owner.toBase58() ==
-        provider.wallet.publicKey.toBase58()
+      provider.wallet.publicKey.toBase58()
     );
   });
 });
