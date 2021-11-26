@@ -1,4 +1,4 @@
-## Dummy Ticket POS on the Solana block chain using Anchor
+## Dummy Ticket POS on the Solana block chain using Anchor and React
 
 This is project is an exploration of how to develop a simple on-chain point of sales (POS) on the Solana blockchain network.
 
@@ -15,5 +15,5 @@ _Note:_ You need the phantom wallet installed and pointing to the `testnet` netw
 
 If you want to play around with the code and modify and test locally pointing to the `solana-test-validator` then you'll have to install and configure both Solana and Anchor.
 
-Solana: [https://docs.solana.com/cli/install-solana-cli-tools]
-Anchor: [https://project-serum.github.io/anchor/getting-started/installation.html#install-rust]
+- Solana: [https://docs.solana.com/cli/install-solana-cli-tools]
+- Anchor: [https://project-serum.github.io/anchor/getting-started/installation.html#install-rust]
