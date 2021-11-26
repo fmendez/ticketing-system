@@ -2,6 +2,10 @@
 
 This is project is an exploration of how to develop a simple on-chain point of sales (POS) on the Solana blockchain network.
 
+![The San Juan Mountains are beautiful!](/public/images/img_1.png "San Juan Mountains")
+
+![The San Juan Mountains are beautiful!](/public/images/img_2.png "San Juan Mountains")
+
 If you want to run the project locally (pointing to the Solana `testnet`):
 
 1. Clone the project.
