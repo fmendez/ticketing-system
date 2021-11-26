@@ -4,6 +4,7 @@ import { Idl, Program, web3 } from "@project-serum/anchor";
 import idl from "../idl.json";
 import { TicketInfo } from "../types";
 import { NodeWallet } from "@project-serum/anchor/dist/cjs/provider";
+import QRCode from "react-qr-code";
 
 const { PublicKey } = web3;
 
@@ -41,16 +42,21 @@ function Ticket({ ticket, ticketingSystem, setTickets }: Props) {
 
     <div className="flex flex-col">
 
+      {!ticket.available &&
+        <div className="pt-3 mx-auto">
+          <QRCode value={ticket.owner + ticket.id} />
+        </div>
+      }
       <div className="ticket">
         <div className="flex items-center border-2 rounded-md border-black p-1.5 ">
-          <div className="transform -rotate-90 self-center self-start">{ticket.id}</div>
+          <div className="transform -rotate-90 self-center">{ticket.id}</div>
           {!ticket.available && <div className="bg-brand-sold transform -rotate-90">SOLD</div>}
 
-          <div className="flex flex-col p-1 items-center">
+          <div className="flex flex-col p-1 items-center font-bold">
             <h2>ADMIT ONE</h2>
             <h3>($1 SOL)</h3>
           </div>
-          <div className="transform -rotate-90 self-center self-end">{ticket.id}</div>
+          <div className="transform -rotate-90 self-center">{ticket.id}</div>
         </div>
       </div>
       <button
@@ -60,6 +66,8 @@ function Ticket({ ticket, ticketingSystem, setTickets }: Props) {
       >
         Buy
       </button>
+
+
     </div>
   );
 }

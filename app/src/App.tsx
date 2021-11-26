@@ -21,29 +21,12 @@ function App() {
     return (
       <div className="main-container">
         <div className="border-b-4 border-brand-border self-stretch">
-          <h1 className="font-bold text-4xl text-center p-4">Ticket Sales</h1>
+          <h1 className="font-bold text-4xl text-center p-4 text-brand-border">Ticket Sales</h1>
         </div>
         <Tickets />
       </div>
     );
   }
-
-  // if (!wallet.connected) {
-  //   return (
-  //     <div className="mainContainer">
-  //       <WalletMultiButton />
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div className="mainContainer">
-  //       <div className="header">
-  //         <h1>Ticket Sales</h1>
-  //       </div>
-  //       <Tickets />
-  //     </div>
-  //   );
-  // }
 }
 
 export default App;

@@ -6,8 +6,9 @@ const opts = {
   preflightCommitment: "processed" as Commitment,
 };
 
+export const network = "https://api.testnet.solana.com";
+// export const network = "http://127.0.0.1:8899";
 export const getConnection = () => {
-  const network = "http://127.0.0.1:8899";
   const connection = new Connection(network, opts.preflightCommitment);
   return connection;
 };
@@ -22,12 +23,12 @@ export const getProvider = async (wallet: NodeWallet) => {
 };
 
 export const generateTickets = (noTickets: number) => {
-  let events = [];
+  let tickets = [];
   let min = Math.ceil(100000);
   let max = Math.floor(900000);
   for (let index = 0; index < noTickets; index++) {
-    const eventId = Math.floor(Math.random() * (max - min) + min);
-    events.push(eventId);
+    const ticketId = Math.floor(Math.random() * (max - min) + min);
+    tickets.push(ticketId);
   }
-  return events;
+  return tickets;
 };

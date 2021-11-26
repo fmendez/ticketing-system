@@ -9,11 +9,12 @@ import {
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { getPhantomWallet } from "@solana/wallet-adapter-wallets";
+import { network } from "./Utils";
 
 const wallets = [getPhantomWallet()];
 ReactDOM.render(
   <React.StrictMode>
-    <ConnectionProvider endpoint={"http://127.0.0.1:7777"}>
+    <ConnectionProvider endpoint={network}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <App />

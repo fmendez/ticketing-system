@@ -1,11 +1,14 @@
 [programs.localnet]
-ticketing_system = "EYaJM3ZCcS7cRQZZcd9NaivR4SKj79Q4wVMUVnkBZWRW"
+ticketing_system = "FnBX9ffS8oWYMaW8FVdnzrfuWAhhKo5RFWugMH6hAYuk"
+
+[programs.testnet]
+ticketing_system = "FnBX9ffS8oWYMaW8FVdnzrfuWAhhKo5RFWugMH6hAYuk"
 
 [registry]
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "testnet"
 wallet = "/Users/fmendez/.config/solana/id.json"
 
 [scripts]
