@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css";
 import Tickets from "./components/Tickets";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
@@ -10,20 +10,40 @@ function App() {
 
   if (!wallet.connected) {
     return (
-      <div className="mainContainer">
-        <WalletMultiButton />
+      <div className="main-container p-4">
+        <div className="flex flex-col lg:w-1/4 sm:w-full md:w-1/2">
+          <WalletMultiButton />
+        </div>
+
       </div>
     );
   } else {
     return (
-      <div className="mainContainer">
-        <div className="header">
-          <h1>Ticket Sales</h1>
+      <div className="main-container">
+        <div className="border-b-4 border-brand-border self-stretch">
+          <h1 className="font-bold text-4xl text-center p-4">Ticket Sales</h1>
         </div>
         <Tickets />
       </div>
     );
   }
+
+  // if (!wallet.connected) {
+  //   return (
+  //     <div className="mainContainer">
+  //       <WalletMultiButton />
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div className="mainContainer">
+  //       <div className="header">
+  //         <h1>Ticket Sales</h1>
+  //       </div>
+  //       <Tickets />
+  //     </div>
+  //   );
+  // }
 }
 
 export default App;

@@ -41,7 +41,7 @@ function Tickets() {
   return (
     <div>
       {tickets.length === 0 && (
-        <button className="btn" onClick={initializeTicketingSystem}>
+        <button className="bg-brand-btn rounded-xl font-bold text-xl m-4 p-2 hover:bg-brand-btn-active" onClick={initializeTicketingSystem}>
           Generate Tickets
         </button>
       )}
