@@ -3,10 +3,11 @@
 This is project is an exploration of how to develop a simple on-chain point of sales (POS) on the Solana blockchain network.
 
 If you want to run the project locally (pointing to the Solana `testnet`):
-1 - Clone the project.
-2 - Go to the `/app` folder.
-3- Run `yarn install`
-4 - Then `yarn run`
+
+1. Clone the project.
+2. Go to the `/app` folder.
+3. Run `yarn install`
+4. Then `yarn run`
 
 You should be able to see the app running at: `[http://localhost:3000/]`
 
